@@ -1,6 +1,7 @@
 /* Copyright (C) 1988-2022 by George Mason University. See file COPYRIGHT for more information. */
 
 #include <stdlib.h>
+#include <stdio.h>
 
 /* Installation options for the GX package. */
 

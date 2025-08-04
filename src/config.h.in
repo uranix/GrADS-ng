@@ -1,160 +1,158 @@
-/* src/config.h.in.  Generated from configure.ac by autoheader.  */
-
 /* Define if building universal (internal helper macro) */
-#undef AC_APPLE_UNIVERSAL_BUILD
+#cmakedefine AC_APPLE_UNIVERSAL_BUILD
 
-/* little_endian machine */
-#undef BYTEORDER
+/* little_endian machine if BYTEORDER=0 */
+#define BYTEORDER ${BYTEORDER}
 
 /* Enabled geotiff */
-#undef GEOTIFF
+#cmakedefine GEOTIFF
 
 /* Define if GetFile has a short prototype */
-#undef GETFILE_SHORT_PROTOTYPE
+#cmakedefine GETFILE_SHORT_PROTOTYPE
 
 /* Machine is a Cray */
-#undef GRADS_CRAY
+#cmakedefine GRADS_CRAY
 
 /* Machine is 64-bit HP */
-#undef GRADS_HP64
+#cmakedefine GRADS_HP64
 
 /* GrADS version */
-#undef GRADS_VERSION
+#define GRADS_VERSION "${CMAKE_PROJECT_VERSION}"
 
 /* Enable grib2 */
-#undef GRIB2
+#cmakedefine GRIB2
 
 /* Enable netcdf4 */
-#undef HAVENETCDF4
+#cmakedefine HAVENETCDF4
 
 /* Define to 1 if you have the <dlfcn.h> header file. */
-#undef HAVE_DLFCN_H
+#cmakedefine HAVE_DLFCN_H
 
 /* Define to 1 if fseeko (and presumably ftello) exists and is declared. */
-#undef HAVE_FSEEKO
+#cmakedefine HAVE_FSEEKO
 
 /* Define to 1 if you have the <hdf4_netcdf.h> header file. */
-#undef HAVE_HDF4_NETCDF_H
+#cmakedefine HAVE_HDF4_NETCDF_H
 
 /* Define to 1 if you have the <history.h> header file. */
-#undef HAVE_HISTORY_H
+#cmakedefine HAVE_HISTORY_H
 
 /* Define to 1 if you have the <inttypes.h> header file. */
-#undef HAVE_INTTYPES_H
+#cmakedefine HAVE_INTTYPES_H
 
 /* Define to 1 if you have the `m' library (-lm). */
-#undef HAVE_LIBM
+#cmakedefine HAVE_LIBM
 
 /* Define if you have a readline compatible library */
-#undef HAVE_LIBREADLINE
+#cmakedefine HAVE_LIBREADLINE
 
 /* Define to 1 if you have the <malloc.h> header file. */
-#undef HAVE_MALLOC_H
+#cmakedefine HAVE_MALLOC_H
 
 /* Define to 1 if you have the <memory.h> header file. */
-#undef HAVE_MEMORY_H
+#cmakedefine HAVE_MEMORY_H
 
 /* Define to 1 if you have the <readline.h> header file. */
-#undef HAVE_READLINE_H
+#cmakedefine HAVE_READLINE_H
 
 /* Define if your readline library has \`add_history' */
-#undef HAVE_READLINE_HISTORY
+#cmakedefine HAVE_READLINE_HISTORY
 
 /* Define to 1 if you have the <readline/history.h> header file. */
-#undef HAVE_READLINE_HISTORY_H
+#cmakedefine HAVE_READLINE_HISTORY_H
 
 /* Define to 1 if you have the <readline/readline.h> header file. */
-#undef HAVE_READLINE_READLINE_H
+#cmakedefine HAVE_READLINE_READLINE_H
 
 /* Define to 1 if you have the `SimpleGetFile' function. */
-#undef HAVE_SIMPLEGETFILE
+#cmakedefine HAVE_SIMPLEGETFILE
 
 /* Define to 1 if you have the <stdint.h> header file. */
-#undef HAVE_STDINT_H
+#cmakedefine HAVE_STDINT_H
 
 /* Define to 1 if you have the <stdlib.h> header file. */
-#undef HAVE_STDLIB_H
+#cmakedefine HAVE_STDLIB_H
 
 /* Define to 1 if you have the <strings.h> header file. */
-#undef HAVE_STRINGS_H
+#cmakedefine HAVE_STRINGS_H
 
 /* Define to 1 if you have the <string.h> header file. */
-#undef HAVE_STRING_H
+#cmakedefine HAVE_STRING_H
 
 /* Define to 1 if you have the <sys/file.h> header file. */
-#undef HAVE_SYS_FILE_H
+#cmakedefine HAVE_SYS_FILE_H
 
 /* Define to 1 if you have the <sys/stat.h> header file. */
-#undef HAVE_SYS_STAT_H
+#cmakedefine HAVE_SYS_STAT_H
 
 /* Define to 1 if you have the <sys/types.h> header file. */
-#undef HAVE_SYS_TYPES_H
+#cmakedefine HAVE_SYS_TYPES_H
 
 /* Define to 1 if you have the <unistd.h> header file. */
-#undef HAVE_UNISTD_H
+#cmakedefine HAVE_UNISTD_H
 
 /* Define if hdf prefixes netcdf symbols by sd */
-#undef HDF_HAVE_NETCDF
+#cmakedefine HDF_HAVE_NETCDF
 
 /* A macro that append sd_ to netcdf symbols if needed */
-#undef HDF_NETCDF_NAME
+#cmakedefine HDF_NETCDF_NAME
 
 /* Define to the sub-directory where libtool stores uninstalled libraries. */
-#undef LT_OBJDIR
+#cmakedefine LT_OBJDIR
 
 /* Define to the address where bug reports for this package should be sent. */
-#undef PACKAGE_BUGREPORT
+#cmakedefine PACKAGE_BUGREPORT
 
 /* Define to the full name of this package. */
-#undef PACKAGE_NAME
+#cmakedefine PACKAGE_NAME
 
 /* Define to the full name and version of this package. */
-#undef PACKAGE_STRING
+#cmakedefine PACKAGE_STRING
 
 /* Define to the one symbol short name of this package. */
-#undef PACKAGE_TARNAME
+#cmakedefine PACKAGE_TARNAME
 
 /* Define to the home page for this package. */
-#undef PACKAGE_URL
+#cmakedefine PACKAGE_URL
 
 /* Define to the version of this package. */
-#undef PACKAGE_VERSION
+#cmakedefine PACKAGE_VERSION
 
 /* Enabled command line editing */
-#undef READLINE
+#cmakedefine READLINE
 
 /* Define to 1 if you have the ANSI C header files. */
-#undef STDC_HEADERS
+#cmakedefine STDC_HEADERS
 
 /* Enable cairo */
-#undef USECAIRO
+#cmakedefine USECAIRO
 
 /* Enable OPeNDAP for grids */
-#undef USEDAP
+#cmakedefine USEDAP
 
 /* Use GetFile from freq */
-#undef USEFREQ
+#cmakedefine USEFREQ
 
 /* Enable OPeNDAP for station data */
-#undef USEGADAP
+#cmakedefine USEGADAP
 
 /* Enable gd */
-#undef USEGD
+#cmakedefine USEGD
 
 /* Enable GUI widgets */
-#undef USEGUI
+#cmakedefine USEGUI
 
 /* Enable hdf4 */
-#undef USEHDF
+#cmakedefine USEHDF
 
 /* Enable hdf5 */
-#undef USEHDF5
+#cmakedefine USEHDF5
 
 /* Enable netcdf */
-#undef USENETCDF
+#cmakedefine USENETCDF
 
 /* Enable shapefile */
-#undef USESHP
+#cmakedefine USESHP
 
 /* Define WORDS_BIGENDIAN to 1 if your processor stores words with the most
    significant byte first (like Motorola and SPARC, unlike Intel). */
@@ -169,7 +167,7 @@
 #endif
 
 /* Define to 1 if the X Window System is missing or not being used. */
-#undef X_DISPLAY_MISSING
+#cmakedefine X_DISPLAY_MISSING
 
 /* Enable large inode numbers on Mac OS X 10.5.  */
 #ifndef _DARWIN_USE_64_BIT_INODE
