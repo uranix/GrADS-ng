@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.10)
 
 project(GrADS VERSION 2.2.3 HOMEPAGE_URL jennifer.m.adams@nasa.gov LANGUAGES C)
 
+set(CMAKE_C_STANDARD 23)
+
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 
 include(CheckIncludeFile)
