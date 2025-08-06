@@ -59,7 +59,8 @@
 #cmakedefine PACKAGE_VERSION
 
 /* Enabled command line editing */
-#cmakedefine READLINE
+#cmakedefine01 USEREADLINE
+#define READLINE USEREADLINE
 
 /* Define to 1 if you have the ANSI C header files. */
 #cmakedefine STDC_HEADERS
