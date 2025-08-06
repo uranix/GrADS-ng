@@ -12,6 +12,13 @@ if(USEGUI)
     list(APPEND grads_LIBS sx)
 endif()
 
+if(USECAIRO)
+    add_library(gxdCairo SHARED gxX.c gxC.c)
+    target_link_libraries(gxdCairo PRIVATE Cairo::Cairo Freetype::Freetype)
+    add_library(gxpCairo SHARED gxprint.c gxC.c)
+    target_link_libraries(gxpCairo PRIVATE Cairo::Cairo Freetype::Freetype)
+endif()
+
 add_definitions(-DHAVE_CONFIG_H=1)
 configure_file(
     "${CMAKE_CURRENT_SOURCE_DIR}/config.h.in"
@@ -59,6 +66,7 @@ add_executable(grads ${grads_SOURCES})
 foreach(lib IN LISTS grads_LIBS)
   target_link_libraries(grads PRIVATE ${lib})
 endforeach()
+set_target_properties(grads PROPERTIES ENABLE_EXPORTS TRUE)
 
       message(STATUS)
       message(STATUS "  +=========================================================================+")

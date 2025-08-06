@@ -36,6 +36,14 @@ endif()
 
 check_include_file("malloc.h" HAVE_MALLOC_H)
 
+if(USECAIRO)
+  find_package(Cairo)
+  find_package(Freetype)
+  if(NOT CAIRO_FOUND OR NOT FREETYPE_FOUND)
+    set(USECAIRO OFF)
+  endif()
+endif()
+
 if(USEREADLINE)
   find_package(Readline)
   if(READLINE_FOUND)
