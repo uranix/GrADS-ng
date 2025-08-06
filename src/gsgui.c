@@ -41,6 +41,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
+#include <unistd.h>
 
 #include "libsx.h"
 #if USEFREQ == 1
@@ -428,7 +430,7 @@ int LoadUserColor(char *name,      /* a short name used by the script */
     UserColors[5].color = YELLOW;
     icolors = 5;
     if (!name)
-      return;
+      return 0;
   }
 
   icolors++;

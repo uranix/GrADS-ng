@@ -85,6 +85,8 @@ static int CmdWinON = 0;  /* Make sure there is only one
 static char **CmdWinList; /* Command buffer */
 static Widget Cmd_window, CmdExpr_window, CmdList_window, CmdStr_window;
 
+int Default_GUI(int argc, char **argv, void *data);
+
 /*---------------------------------------------------------------------*
 
 /*

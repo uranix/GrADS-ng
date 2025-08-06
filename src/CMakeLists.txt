@@ -9,6 +9,7 @@ if(USEGUI)
         gagui.c
         gsgui.c
     )
+    list(APPEND grads_LIBS sx)
 endif()
 
 add_definitions(-DHAVE_CONFIG_H=1)
