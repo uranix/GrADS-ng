@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(GrADS VERSION 2.2.3 HOMEPAGE_URL jennifer.m.adams@nasa.gov)
+project(GrADS VERSION 2.2.3 HOMEPAGE_URL jennifer.m.adams@nasa.gov LANGUAGES C)
+
+set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 
 include(CheckIncludeFile)
 include(CheckLibraryExists)
@@ -44,12 +46,10 @@ check_include_file("unistd.h" HAVE_UNISTD_H)
 check_include_file("stdlib.h" HAVE_STDLIB_H)
 
 if(USEREADLINE)
-  check_include_file("readline/history.h" HAVE_READLINE_HISTORY_H)
-  check_include_file("readline/readline.h" HAVE_READLINE_READLINE_H)
-  check_library_exists("readline" "readline" "" HAVE_LIBREADLINE)
-  if(HAVE_READLINE_HISTORY_H AND HAVE_READLINE_READLINE_H AND HAVE_LIBREADLINE)
+  find_package(Readline)
+  if(READLINE_FOUND)
     set(USEREADLINE ON)
-    list(APPEND grads_LIBS readline)
+    list(APPEND grads_LIBS Readline::Readline)
   else()
     set(USEREADLINE OFF)
   endif()
