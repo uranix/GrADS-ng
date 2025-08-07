@@ -9,7 +9,9 @@ if(USEGUI)
         gagui.c
         gsgui.c
     )
-    list(APPEND grads_LIBS sx)
+    list(APPEND grads_LIBS SX::SX)
+    add_library(gxdX11 SHARED gxX11.c)
+    target_link_libraries(gxdX11 PRIVATE X11::X11)
 endif()
 
 if(USECAIRO)
@@ -18,6 +20,13 @@ if(USECAIRO)
     add_library(gxpCairo SHARED gxprint.c gxC.c)
     target_link_libraries(gxpCairo PRIVATE Cairo::Cairo Freetype::Freetype)
 endif()
+
+if(USEGD)
+    add_library(gxpGD SHARED gxprintGD.c gxGD.c)
+    target_link_libraries(gxpGD PRIVATE GD::GD)
+endif()
+
+add_library(gxdummy SHARED gxdummy.c)
 
 add_definitions(-DHAVE_CONFIG_H=1)
 configure_file(
