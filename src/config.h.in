@@ -21,7 +21,8 @@
 #define GRADS_VERSION "${CMAKE_PROJECT_VERSION}"
 
 /* Enable grib2 */
-#cmakedefine GRIB2
+#cmakedefine01 USEGRIB2
+#define GRIB2 USEGRIB2
 
 /* Enable netcdf4 */
 #cmakedefine HAVENETCDF4
