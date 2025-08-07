@@ -5,7 +5,8 @@
 #define BYTEORDER ${BYTEORDER}
 
 /* Enabled geotiff */
-#cmakedefine GEOTIFF
+#cmakedefine01 USEGEOTIFF
+#define GEOTIFF USEGEOTIFF
 
 /* Define if GetFile has a short prototype */
 #cmakedefine GETFILE_SHORT_PROTOTYPE

@@ -64,3 +64,4 @@ void gxpsignal(gaint a) {}
 void gxpclip(gadouble a, gadouble b, gadouble c, gadouble d) {}
 gadouble gxpch(char a, gaint b, gadouble c, gadouble d, gadouble e, gadouble f, gadouble g) { return 0; }
 gadouble gxpqchl(char a, gaint b, gadouble c) { return 0; }
+void gxdcirc(gadouble x, gadouble y, gadouble r, gaint flg) {}
