@@ -32,6 +32,9 @@
 
 #if GRIB2 == 1
 #include "grib2.h"
+#ifndef G2_VERSION
+#define G2_VERSION G2C_VERSION
+#endif
 #endif
 
 #if USEHDF == 1
