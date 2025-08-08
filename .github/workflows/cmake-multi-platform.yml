@@ -28,6 +28,7 @@ jobs:
         sudo apt-get update && sudo apt-get install -y
         libx11-dev libxt-dev libsx-dev libreadline-dev libcairo2-dev libfreetype-dev
         libgeotiff-dev libtiff-dev libgd-dev libshp-dev libg2c-dev
+        libudunits2-dev libhdf4-dev libhdf5-dev
 
     - name: Set reusable strings
       id: strings
