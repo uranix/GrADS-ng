@@ -10,6 +10,7 @@ include(CheckIncludeFile)
 include(CheckLibraryExists)
 include(CheckFunctionExists)
 include(CheckSymbolExists)
+include(CheckTypeSize)
 
 option(USEGADAP "GrADS specific library for accessing station data" OFF)
 option(USEDAP "Use DAP" OFF)
@@ -33,6 +34,8 @@ else()
     set(BYTEORDER 0)
     message(WARNING "Endianness could not be determined.")
 endif()
+
+check_type_size("int" SIZEOF_INT)
 
 check_include_file("malloc.h" HAVE_MALLOC_H)
 

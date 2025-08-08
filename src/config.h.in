@@ -11,11 +11,8 @@
 /* Define if GetFile has a short prototype */
 #cmakedefine GETFILE_SHORT_PROTOTYPE
 
-/* Machine is a Cray */
-#cmakedefine GRADS_CRAY
-
-/* Machine is 64-bit HP */
-#cmakedefine GRADS_HP64
+/* Size of gaint (which is int) */
+#define SIZEOF_INT ${SIZEOF_INT}
 
 /* GrADS version */
 #define GRADS_VERSION "${CMAKE_PROJECT_VERSION}"

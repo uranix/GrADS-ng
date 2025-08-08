@@ -21,7 +21,7 @@
 
 static char masks[8] = {0, 127, 63, 31, 15, 7, 3, 1};
 
-#if GRADS_CRAY == 1
+#if SIZEOF_INT == 8
 
 /* 64-bit gagby
    routine to get an integer length one to eight and return it as a long int. */
@@ -265,7 +265,7 @@ void gapbb(gaint ival, unsigned char *ch, gaint ioff, gaint ilen) {
   return;
 }
 
-#else
+#elif SIZEOF_INT == 4
 
 /*  32-bit gagby */
 gaint gagby(unsigned char *ch, gaint ioff, gaint ilen) {
@@ -506,5 +506,9 @@ void gapbb(gaint ival, unsigned char *ch, gaint ioff, gaint ilen) {
   }
   return;
 }
+
+#else
+
+#error "Unsupported SIZEOF_INT"
 
 #endif
