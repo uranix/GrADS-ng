@@ -4948,7 +4948,7 @@ gaint h5pattrs(hid_t h5id, char *vname, char *abbrv, gaint hdrflg, gaint fnum, c
       err = 1;
   }
   if (!err) {
-#if H5_VERSION_GE(1,10,3)
+#if H5_VERSION_GE(1,11,0)
     rc = H5Oget_info(vid, &oinfo, H5O_INFO_BASIC);
 #else
     rc = H5Oget_info(vid, &oinfo);
