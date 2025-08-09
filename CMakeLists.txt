@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.20)
 
-project(GrADS VERSION 2.2.3 HOMEPAGE_URL jennifer.m.adams@nasa.gov)
+project(GrADS VERSION 2.2.3)
 
 set(CMAKE_C_STANDARD 11)
 
@@ -11,6 +11,7 @@ include(CheckLibraryExists)
 include(CheckFunctionExists)
 include(CheckSymbolExists)
 include(CheckTypeSize)
+include(TestBigEndian)
 
 option(USEGADAP "Use DAP and GADAP" ON)
 option(USEGUI "Enable GUI" ON)
@@ -24,13 +25,12 @@ option(USEGRIB2 "GRIB2 support" ON)
 option(USEHDF5 "HDF5 support" ON)
 option(USENETCDF "NetCDF support" ON)
 
-if(CMAKE_C_BYTE_ORDER STREQUAL "BIG_ENDIAN")
+test_big_endian(IS_BIG_ENDIAN)
+
+if(IS_BIG_ENDIAN)
     set(BYTEORDER 1)
-elseif(CMAKE_C_BYTE_ORDER STREQUAL "LITTLE_ENDIAN")
-    set(BYTEORDER 0)
 else()
     set(BYTEORDER 0)
-    message(WARNING "Endianness could not be determined.")
 endif()
 
 check_type_size("int" SIZEOF_INT)

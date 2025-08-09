@@ -8,15 +8,21 @@ on:
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
 
     strategy:
-      fail-fast: false
+      fail-fast: true
 
       matrix:
-        os: [ubuntu-latest]
+        distro:
+          - ubuntu:18.04
+          - ubuntu:20.04
+          - ubuntu:22.04
+          - ubuntu:24.04
         build_type: [Release]
-        c_compiler: [gcc, clang]
+        c_compiler: [gcc]
+
+    container: ${{ matrix.distro }}
 
     steps:
     - uses: actions/checkout@v4
@@ -24,12 +30,41 @@ jobs:
     - name: Prepare build env
       id: env
       shell: bash
-      run: >
-        sudo apt-get update && sudo apt-get install -y
-        libx11-dev libxt-dev libsx-dev libreadline-dev libcairo2-dev libfreetype-dev
-        libgeotiff-dev libtiff-dev libgd-dev libshp-dev libg2c-dev
-        libudunits2-dev libhdf4-dev libhdf5-dev libnetcdf-dev
-        libdap-dev libgadap-dev
+      run: |
+        export DEBIAN_FRONTEND=noninteractive
+        case "${{ matrix.distro }}" in
+          ubuntu:*)
+            apt-get update && apt-get install -y --no-install-recommends \
+              build-essential gcc g++ wget gpg gpg-agent ca-certificates
+            wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc | apt-key add -
+            echo "deb https://apt.kitware.com/ubuntu/ $(grep UBUNTU_CODENAME /etc/os-release | cut -d= -f2) main" > /etc/apt/sources.list.d/kitware.list
+            apt-get update
+            apt-cache madison cmake | cut -d "|" -f 2 | sed 's/ //g' > cmake_versions
+            echo 3.20-needle >> cmake_versions
+            cmake_version=$(sort -V cmake_versions | grep needle -A1 | tail -n 1)
+            echo "Selecting cmake version ${cmake_version}"
+            apt-get install -y --no-install-recommends \
+              cmake=${cmake_version} cmake-data=${cmake_version} \
+              libx11-dev libxt-dev libsx-dev libreadline-dev libncurses-dev libcairo2-dev \
+              libgeotiff-dev libtiff-dev libgd-dev libshp-dev \
+              libudunits2-dev libhdf4-dev libhdf5-dev libnetcdf-dev \
+              libdap-dev libgadap-dev
+        esac
+
+        case "${{ matrix.distro }}" in
+          ubuntu:24*)
+            apt-get update && apt-get install -y --no-install-recommends \
+              libg2c-dev libfreetype-dev
+              ;;
+          ubuntu:20*|ubuntu:22*)
+            apt-get update && apt-get install -y --no-install-recommends \
+              libgrib2c-dev libfreetype-dev
+              ;;
+          ubuntu:18*)
+            apt-get update && apt-get install -y --no-install-recommends \
+              libgrib2c-dev libfreetype6-dev
+              ;;
+        esac
 
     - name: Set reusable strings
       id: strings
@@ -49,4 +84,15 @@ jobs:
 
     - name: Test
       working-directory: ${{ steps.strings.outputs.build-output-dir }}
-      run: ctest --build-config ${{ matrix.build_type }}
+      run: |
+        echo "# Type     Name     Full path to shared object file" > udpt
+        echo "# ----     ----     -------------------------------" >> udpt
+        echo "gxdisplay  Cairo    src/libgxdCairo.so" >> udpt
+        echo "gxdisplay  X11      src/libgxdX11.so" >> udpt
+        echo "gxdisplay  gxdummy  src/libgxdummy.so" >> udpt
+        echo "*" >> udpt
+        echo "gxprint    Cairo    src/libgxpCairo.so" >> udpt
+        echo "gxprint    GD       src/libgxpGD.so" >> udpt
+        echo "gxprint    gxdummy  src/libgxdummy.so" >> udpt
+
+        GADDIR=data GAUDPT=udpt ./src/grads -l -b -c "quit"
