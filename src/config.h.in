@@ -22,7 +22,8 @@
 #define GRIB2 USEGRIB2
 
 /* Enable netcdf4 */
-#cmakedefine HAVENETCDF4
+#cmakedefine01 USENETCDF4
+#define HAVENETCDF4 USENETCDF4
 
 /* Define to 1 if fseeko (and presumably ftello) exists and is declared. */
 #cmakedefine HAVE_FSEEKO
@@ -36,33 +37,9 @@
 /* A macro that append sd_ to netcdf symbols if needed */
 #cmakedefine HDF_NETCDF_NAME
 
-/* Define to the sub-directory where libtool stores uninstalled libraries. */
-#cmakedefine LT_OBJDIR
-
-/* Define to the address where bug reports for this package should be sent. */
-#cmakedefine PACKAGE_BUGREPORT
-
-/* Define to the full name of this package. */
-#cmakedefine PACKAGE_NAME
-
-/* Define to the full name and version of this package. */
-#cmakedefine PACKAGE_STRING
-
-/* Define to the one symbol short name of this package. */
-#cmakedefine PACKAGE_TARNAME
-
-/* Define to the home page for this package. */
-#cmakedefine PACKAGE_URL
-
-/* Define to the version of this package. */
-#cmakedefine PACKAGE_VERSION
-
 /* Enabled command line editing */
 #cmakedefine01 USEREADLINE
 #define READLINE USEREADLINE
-
-/* Define to 1 if you have the ANSI C header files. */
-#cmakedefine STDC_HEADERS
 
 /* Enable cairo */
 #cmakedefine01 USECAIRO

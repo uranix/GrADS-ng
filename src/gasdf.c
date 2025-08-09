@@ -30,8 +30,8 @@
 #include <string.h>
 #include <unistd.h>
 #if USENETCDF == 1
-#include "gasdf_std_time.h"
 #include "netcdf.h"
+#include "gasdf_std_time.h"
 #endif
 #if USEHDF == 1
 #include "mfhdf.h"
