@@ -35,7 +35,7 @@ jobs:
         case "${{ matrix.distro }}" in
           ubuntu:*)
             apt-get update && apt-get install -y --no-install-recommends \
-              build-essential gcc g++ \
+              build-essential gcc g++ cmake \
               libx11-dev libxt-dev libsx-dev libreadline-dev libncurses-dev libcairo2-dev \
               libgeotiff-dev libtiff-dev libgd-dev libshp-dev \
               libudunits2-dev libhdf4-dev libhdf5-dev libnetcdf-dev \
