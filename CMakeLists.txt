@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(GrADS VERSION 2.2.3 HOMEPAGE_URL jennifer.m.adams@nasa.gov LANGUAGES C)
+project(GrADS VERSION 2.2.3 HOMEPAGE_URL jennifer.m.adams@nasa.gov)
 
 set(CMAKE_C_STANDARD 11)
 
@@ -12,8 +12,7 @@ include(CheckFunctionExists)
 include(CheckSymbolExists)
 include(CheckTypeSize)
 
-option(USEGADAP "GrADS specific library for accessing station data" OFF)
-option(USEDAP "Use DAP" OFF)
+option(USEGADAP "Use DAP and GADAP" ON)
 option(USEGUI "Enable GUI" ON)
 option(USEREADLINE "Use readline" ON)
 option(USEGEOTIFF "GeoTIFF support" ON)
@@ -37,6 +36,16 @@ endif()
 check_type_size("int" SIZEOF_INT)
 
 check_include_file("malloc.h" HAVE_MALLOC_H)
+
+if(USEGADAP)
+    find_package(LIBDAP)
+    find_package(Gadap)
+    if(LIBDAP_FOUND AND GADAP_FOUND)
+        list(APPEND grads_LIBS GADAP::GADAP LIBDAP::LIBDAP)
+    else()
+        set(USEGADAP OFF)
+    endif()
+endif()
 
 if(USECAIRO)
     find_package(Cairo)
