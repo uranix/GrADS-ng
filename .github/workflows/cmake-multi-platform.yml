@@ -15,7 +15,7 @@ jobs:
 
       matrix:
         distro:
-          - ubuntu:18.04
+          # - ubuntu:18.04  # Went EOL on 31 May 2023, GitHub Actions no longer supports this
           - ubuntu:20.04
           - ubuntu:22.04
           - ubuntu:24.04
@@ -25,7 +25,7 @@ jobs:
     container: ${{ matrix.distro }}
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Prepare build env
       id: env
