@@ -87,19 +87,17 @@ static Widget Cmd_window, CmdExpr_window, CmdList_window, CmdStr_window;
 
 int Default_GUI(int argc, char **argv, void *data);
 
-/*---------------------------------------------------------------------*
+/*---------------------------------------------------------------------*/
 
 /*
  * This is the GaGUI entry point. Return is thru the quit button.
  *
  */
 
-int gagui_main(int argc, char **argv) {
+int gagui_main(int argc_ignore, char **argv_ignore) {
 
-  /*
-    static char *argv[] = { "GrADS", "-bg", "gray", NULL, NULL };
-    static int   argc = 3;
-  */
+  static char *argv[] = { "GrADS", NULL };
+  static int   argc = 1;
 
   char *path;
 
